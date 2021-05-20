@@ -69,7 +69,7 @@ function wporg_options_page_html()
             jQuery(document).ready(function() {
                 jQuery(".change_restrictions").click(function(e) {
                     e.preventDefault();
-                    console.log(jQuery(this).text())
+                    //console.log(jQuery(this).text())
                     const el = jQuery(this)
                     const id = jQuery(this).attr('data-id')
                     const res = jQuery(this).text();
@@ -126,17 +126,32 @@ function my_action()
     wp_die();
 }
 
+function custom_redirects() {
+ 
+	$url = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+	$current_post_id = url_to_postid( $url );
+	$res = get_metadata('post',  $current_post_id, 'restrictions', true);
+	$urlhome = get_site_url();
+	$login=is_user_logged_in();
+	if ($res  == "Restricted" && $login != "1") {
+		echo '<script>window.location.href = "'.$urlhome.'";</script>';
+	}
+ 
+}
+add_action( 'template_redirect', 'custom_redirects' );
+
+
 //function.php REDIRECT DIO!!!
 
 // add_action ('wp_loaded', 'my_custom_redirect');
 
 // function my_custom_redirect() {
-// 	$url = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
-// 	$current_post_id = url_to_postid( $url );
-// 	$res = get_metadata('post',  $current_post_id, 'restrictions', true);
-// 	$urlhome = get_site_url();
-// 	$login=is_user_logged_in();
-// 	if ($res  == "Restricted" && $login != "1") {
-// 		echo '<script>window.location.href = "'.$urlhome.'";</script>';
-// 	}
+	// $url = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+	// $current_post_id = url_to_postid( $url );
+	// $res = get_metadata('post',  $current_post_id, 'restrictions', true);
+	// $urlhome = get_site_url();
+	// $login=is_user_logged_in();
+	// if ($res  == "Restricted" && $login != "1") {
+	// 	echo '<script>window.location.href = "'.$urlhome.'";</script>';
+	// }
 // }
