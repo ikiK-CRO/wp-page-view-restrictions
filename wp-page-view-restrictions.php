@@ -137,7 +137,8 @@ function custom_redirects()
     $login = is_user_logged_in();
 
     if ($restrictions  == "Restricted" && $login != "1") {
-        echo '<script>window.location.href = "' . $urlhome . '";</script>';
+        wp_redirect($urlhome);
+        exit;
     }
 }
 add_action('template_redirect', 'custom_redirects');
