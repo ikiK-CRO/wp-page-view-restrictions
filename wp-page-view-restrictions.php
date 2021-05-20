@@ -85,17 +85,12 @@ function wporg_options_page_html()
                                 alert('Restrictions set to: ' + data);
                             }
                         });
-
-
-
                 });
             });
         </script>
 
 
-
 <?php
-
 
     }
 }
