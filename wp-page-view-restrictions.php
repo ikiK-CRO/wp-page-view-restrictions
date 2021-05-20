@@ -82,7 +82,7 @@ function wporg_options_page_html()
                         .done(function(data) {
                             if (data != '') {
                                 el.find("a").text(data)
-                                alert('Restrictions set to: ' + data);
+                                // alert('Restrictions set to: ' + data);
                             }
                         });
                 });
