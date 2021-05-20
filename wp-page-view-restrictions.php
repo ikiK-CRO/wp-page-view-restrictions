@@ -139,3 +139,7 @@ function custom_redirects() {
  
 }
 add_action( 'template_redirect', 'custom_redirects' );
+
+
+
+
