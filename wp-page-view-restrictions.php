@@ -128,9 +128,10 @@ function my_action()
 
 function custom_redirects() {
  
-	$url = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
-	$current_post_id = url_to_postid( $url );
-	$restrictions = get_metadata('post',  $current_post_id, 'restrictions', true);
+	// $url = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+	// $current_post_id = url_to_postid( $url );
+    global $post;
+	$restrictions = get_metadata('post',  $post->ID, 'restrictions', true);
 	$urlhome = get_site_url();
 	$login=is_user_logged_in();
 
