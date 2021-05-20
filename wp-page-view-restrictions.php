@@ -139,19 +139,3 @@ function custom_redirects() {
  
 }
 add_action( 'template_redirect', 'custom_redirects' );
-
-
-//function.php REDIRECT DIO!!!
-
-// add_action ('wp_loaded', 'my_custom_redirect');
-
-// function my_custom_redirect() {
-	// $url = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
-	// $current_post_id = url_to_postid( $url );
-	// $res = get_metadata('post',  $current_post_id, 'restrictions', true);
-	// $urlhome = get_site_url();
-	// $login=is_user_logged_in();
-	// if ($res  == "Restricted" && $login != "1") {
-	// 	echo '<script>window.location.href = "'.$urlhome.'";</script>';
-	// }
-// }
