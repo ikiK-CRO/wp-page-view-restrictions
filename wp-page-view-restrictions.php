@@ -126,22 +126,18 @@ function my_action()
     wp_die();
 }
 
-function custom_redirects() {
- 
-	// $url = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
-	// $current_post_id = url_to_postid( $url );
+function custom_redirects()
+{
+
+    // $url = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+    // $current_post_id = url_to_postid( $url );
     global $post;
-	$restrictions = get_metadata('post',  $post->ID, 'restrictions', true);
-	$urlhome = get_site_url();
-	$login=is_user_logged_in();
+    $restrictions = get_metadata('post',  $post->ID, 'restrictions', true);
+    $urlhome = get_site_url();
+    $login = is_user_logged_in();
 
-	if ($restrictions  == "Restricted" && $login != "1") {
-		echo '<script>window.location.href = "'.$urlhome.'";</script>';
-	}
- 
+    if ($restrictions  == "Restricted" && $login != "1") {
+        echo '<script>window.location.href = "' . $urlhome . '";</script>';
+    }
 }
-add_action( 'template_redirect', 'custom_redirects' );
-
-
-
-
+add_action('template_redirect', 'custom_redirects');
